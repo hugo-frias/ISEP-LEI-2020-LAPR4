@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Instancias" type="InstanciasType"/>
+  <xs:complexType name="CategoriaType">
+    <xs:sequence>
+      <xs:element name="codigo">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--Assumimos que o codigo da categoria é Cxxx sendo x um numero-->
+            <xs:pattern value="C[0-9][0-9]([0-9])?"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricao">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--Não permite descrições nulas-->
+            <xs:minLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DepositoType">
+    <xs:sequence>
+      <xs:element name="codigoDeposito">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--Assumimos que o codigo do deposito é Dxxx sendo x um numero-->
+           <xs:pattern value="D[0-9][0-9][0-9]"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricaoDeposito">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--Não permite descrições nulas-->
+            <xs:minLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="execucaoOrdemProducaoType">
+    <xs:sequence>
+      <xs:element name="quantidadePretendida">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--Não permite quantidades nulas-->
+			<xs:minLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element type="xs:string" name="quantidadeProduzida"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="categoriaType">
+    <xs:sequence>
+      <xs:element name="codigo">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--Codigo da categoria Cxx(x)-->
+            <xs:pattern value="C[0-9][0-9]([0-9])?"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricao">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--Não permite descrições nulas-->
+            <xs:minLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="produtoType">
+    <xs:sequence>
+      <xs:element type="categoriaType" name="categoria"/>
+      <xs:element name="codigoComercial">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--Codigo comercial do produto PCxx-->
+            <xs:pattern value = "PC[0-9][0-9]"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoFabrico">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--Codigo de fabrico do produto PFxx-->
+            <xs:pattern value = "PF[0-9][0-9]"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricaoBreve">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--Não permite descrições nulas-->
+            <xs:minLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricaoCompleta">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--Não permite descrições nulas-->
+            <xs:minLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="unidadeMedidaId">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--Não permite descrições nulas-->
+            <xs:minLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ordemProducaoType">
+    <xs:sequence>
+      <xs:element name="dataPrevistaExecucao">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--Validação de data ano-mes-dia xxxx-xx-xx -->
+			<xs:pattern value = "([0-9][0-9][0-9][0-9])-(0[1-9]|1[0-2])-(0[1-9]|1[0-9]|2[0-9]|3[0-1])"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="datadeEmissao">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--Validação de data ano-mes-dia xxxx-xx-xx -->
+			<xs:pattern value = "([0-9][0-9][0-9][0-9])-(0[1-9]|1[0-2])-(0[1-9]|1[0-9]|2[0-9]|3[0-1])"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element type="execucaoOrdemProducaoType" name="execucaoOrdemProducao"/>
+      <xs:element name="idOrdemProducao">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--Assumimos que o id de ordem de produção seria OPXX sendo x um numero -->
+			<xs:pattern value = "OP[0-9][0-9]"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element type="produtoType" name="produto"/>
+      <xs:element type="xs:string" name="unidadeMedida"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EncomendaType">
+    <xs:sequence>
+      <xs:element name="idEncomenda">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+			<!--Expressao regular do id das encomendas-->
+			<xs:pattern value="ENC[0-9][0-9]"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element type="ordemProducaoType" name="ordemProducao"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listaMaquinasType">
+    <xs:sequence>
+      <xs:element name="codigoInterno">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+			<!--O id da maquina assumimos que era Mxxx ou TX sendo que x é um numero -->
+			<xs:pattern value="(T[0-9])|(M[0-9][0-9][0-9])"/>           
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricao">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--Não permite descrições nulas-->
+            <xs:minLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="marca">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--Não permite marcas nulas-->
+            <xs:minLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="modelo">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--Não permite modelos nulas-->
+            <xs:minLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="numSerie">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--Não permite numero de series sem ser com 8 digitos-->
+            <xs:length value="8"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element type="xs:string" name="version"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LinhaProduçãoType">
+    <xs:sequence>
+      <xs:element name="idLinhaProducao">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--O id da linha de produção assumimos que era LPxxx em que x é um numero -->
+            <xs:pattern value="LP[0-9][0-9][0-9]"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element type="listaMaquinasType" name="listaMaquinas" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MaquinaType">
+    <xs:sequence>
+      <xs:element name="codigoInterno">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--O id da maquina assumimos que era Mxxx ou TX sendo que x é um numero -->
+			<xs:pattern value="(T[0-9])|(M[0-9][0-9][0-9])"/>   
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricao">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--Não permite descrições nulas-->
+            <xs:minLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="marca">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--Não permite marcas nulas-->
+            <xs:minLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="modelo">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--Não permite modelos nulos-->
+            <xs:minLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="numSerie">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--Não permite numero de series sem ser com 8 digitos-->
+            <xs:length value="8"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element type="xs:string" name="version"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MateriaPrimaType">
+    <xs:sequence>
+      <xs:element name="codigoInterno">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--Codigo interno da materia prima assumimos que era MPx sendo x um numero -->
+            <xs:pattern value="MP[0-9]"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricao">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--Não permite descrições nulas-->
+            <xs:minLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nomeFichaTecnica">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--Não permite nomes nulos-->
+            <xs:minLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OrdemProducaoType">
+    <xs:sequence>
+      <xs:element name="dataPrevistaExecucao">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--Validação de datas ano-mes-dia xxxx-xx-xx-->
+            <xs:pattern value = "([0-9][0-9][0-9][0-9])-(0[1-9]|1[0-2])-(0[1-9]|1[0-9]|2[0-9]|3[0-1])"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="datadeEmissao">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--Validação de datas ano-mes-dia xxxx-xx-xx-->
+            <xs:pattern value = "([0-9][0-9][0-9][0-9])-(0[1-9]|1[0-2])-(0[1-9]|1[0-9]|2[0-9]|3[0-1])"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element type="execucaoOrdemProducaoType" name="execucaoOrdemProducao"/>
+      <xs:element name="idOrdemProducao">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--Assumimos que o id da ordem de produção seria OPxx sendo x um numero -->
+			<xs:pattern value = "OP[0-9][0-9]"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element type="produtoType" name="produto"/>
+      <xs:element type="xs:string" name="unidadeMedida"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ProdutoType">
+    <xs:sequence>
+      <xs:element type="categoriaType" name="categoria"/>
+      <xs:element name="codigoComercial">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--Assumimos que o codigo comercial sera representado por PCxx sendo x um numero-->
+            <xs:pattern value = "PC[0-9][0-9]"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="codigoFabrico">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--Assumimos que o codigo de fabrico sera representado por PFxx sendo o x um numero-->
+            <xs:pattern value = "PF[0-9][0-9]"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricaoBreve">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+           <!--Não permite descrições nulas-->
+            <xs:minLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="descricaoCompleta">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--Não permite descrições nulas-->
+            <xs:minLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="unidadeMedidaId">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!--Não permite unidades de medida nulas-->
+			<xs:minLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="InstanciasType">
+    <xs:sequence>
+      <xs:element type="CategoriaType" name="Categoria" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element type="DepositoType" name="Deposito" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element type="EncomendaType" name="Encomenda" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element type="LinhaProduçãoType" name="LinhaProdução" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element type="MaquinaType" name="Maquina" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element type="MateriaPrimaType" name="MateriaPrima" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element type="OrdemProducaoType" name="OrdemProducao" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element type="ProdutoType" name="Produto" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

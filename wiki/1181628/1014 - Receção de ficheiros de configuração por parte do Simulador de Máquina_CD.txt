@@ -1,0 +1,24 @@
+@startuml
+title 1014 - Receção de ficheiros de configuração por parte do Simulador de Máquina
+
+class ServicoComunicacaoMaquinas {
++ read()
++ write()
+}
+
+class Main {
++ rootCS()
+}
+
+class ServidorSimulador {
+mensagem_troca
++ rootCS()
++ isValid()
++ write()
++ read()
+}
+
+
+ServidorSimulador "1" <-up- "1" Main: chama
+ServicoComunicacaoMaquinas "1" <-up- "1" ServidorSimulador: comunica
+@enduml

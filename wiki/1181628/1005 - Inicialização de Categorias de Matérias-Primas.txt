@@ -1,0 +1,12 @@
+@startuml
+
+title 1005 : Inicialização de Categorias de Matérias-Primas
+
+Bootstrapper->RegistarCategoriaController:registar(codigoCategoria, descricaoCategoria)
+RegistarCategoriaController->PersistenceContext:repositories()
+PersistenceContext->RepositoryFactory:create
+RepositoryFactory->CategoriaRepository:create
+RegistarCategoriaController->Categoria:novaCategoria = create(codigoCategoria, descricaoCategoria)
+RegistarCategoriaController->CategoriaRepository:save(novaCategoria)
+
+@endtuml

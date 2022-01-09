@@ -1,0 +1,47 @@
+@startuml
+
+title 1005 - Inicialização de Categorias de Matérias-Primas
+
+class Categoria {
++String codigo
++String descricao
+}
+
+class PersistenceContext {
++ repositories()
+}
+
+class RegistarCategoriaController {
++ registarCategoria(codigo, descricao)
+}
+
+
+class RepositoryFactory {
++ create()
+}
+
+class CategoriaRepository {
++ create()
++ save(novaCategoria)
+}
+
+class Categoria {
++ create(codigo, descricao)
+}
+
+class RegistarCategoriaController
+class RepositoryFactory
+class CategoriaRepository
+class Bootstrapper
+class PersistenceContext
+class Categoria
+
+
+RegistarCategoriaController "1" <-up- "1" Bootstrapper: chama
+PersistenceContext "1" <-up- "1" RegistarCategoriaController: chama
+RepositoryFactory "1" <-up- "1" PersistenceContext: chama
+CategoriaRepository "1" <-up- "1" RepositoryFactory: cria
+Categoria "many" <-up- "1" CategoriaRepository: persiste
+Categoria "many" <-up- "1" RegistarCategoriaController: cria
+
+@enduml

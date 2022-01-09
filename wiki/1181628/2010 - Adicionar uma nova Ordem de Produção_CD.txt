@@ -1,0 +1,87 @@
+@startuml
+
+title 2010 - Adicionar uma nova Ordem de Produção
+
+class OrdemProducao {
++String identificador
++Date dataEmissao
++Date dataPrevistaExecucao
++ create(identificador, dataEmissao, dataPrevistaExecucao, aqueleProduto, unidadeMedida, execucaoControlo)
+}
+
+class ExecucaoOrdemProducao {
++Char Status
++Double quantidadeProduzida
++Double quantidadePretendida
++TimeStamp dataFimDeProducao
+}
+
+class Desperdicio {
++String identificador
+}
+
+class Estorno {
++String identificador
+}
+class Item {
++String idItem
+}
+
+class Produto {
++Int codigoFabrico
++String codigoComercial
++String descBreve
++String descCompleta
++ create(codigoFabrico,codigoComercial,descBreve,descCompleta,unidade,categoriaEscolhida)
+}
+
+class Categoria {
++String codigo
++String descricao
+}
+
+class UnidadeMedida {
++String unidade
+}
+
+class PersistenceContext {
++ repositories()
+}
+
+class RegistarOrdemProducaoController {
++ registarOrdemProducao(identificador, quantidadePretendida, aqueleProduto, unidadeMedida, dataPrevistaExecucao)
+}
+
+class RepositoryFactory {
++ create()
+}
+
+class ProdutoRepository {
++ create()
++ findAll()
+}
+
+class OrdemProducaoRepository {
++ create()
++ save(novaOrdemProducao)
+}
+
+RegistarOrdemProducaoController "1" <-up- "1" RegistarOrdemProducaoUI: chama
+PersistenceContext "1" <-up- "1" RegistarOrdemProducaoController: chama
+RepositoryFactory "1" <-up- "1" PersistenceContext: chama
+ProdutoRepository "1" <-up- "1" RepositoryFactory: cria
+OrdemProducaoRepository "1" <-up- "1" RepositoryFactory: cria
+OrdemProducao "many" <-up- "1" OrdemProducaoRepository: persiste
+Produto "many" <-up- "1" ProdutoRepository: persiste
+OrdemProducao "many" <-up- "1" RegistarOrdemProducaoController: cria
+ExecucaoOrdemProducao "1" <-up- "1" OrdemProducao: tem
+Desperdicio "0..*" <-up- "1" ExecucaoOrdemProducao: tem
+Estorno "0..*" <-up- "1" ExecucaoOrdemProducao: tem
+Deposito "1..*" <-up- "1..*" Estorno: guardado
+Deposito "1..*" <-up- "1..*" Desperdicio: guardado
+Produto "1" <-up- "1" OrdemProducao: refere
+Item "1" <-up- "1" Produto: é
+UnidadeMedida "1" <-up- "1" Item: tem
+Categoria "1" <-up- "1" Item: tem
+
+@enduml

@@ -1,0 +1,32 @@
+@startuml
+title 3010 - Solicitar envio de configuração de uma máquina
+
+class ServicoComunicacaoMaquinas {
++ serverSocket
++ sslSocket
++ serverIp
++ main()
++ envioConfiguracao()
+}
+
+class SCMClient{
++ sslSocket
++ idMaquina
++ run()
++ enviarConfiguracaoAMaquina(DataOutputStream sOut, DataInputStream sIn)
++ enviaPedidoConfiguracao(DataOutputStream sOut)
++ enviaConfiguracao(DataOutputStream sOut)
++ getConfiguracao()
++ checkResposta(DataInputStream sIn)
++ criarMensagem(String mensagem, String id, int code)
+}
+
+class Maquina {
++ responde(String mensagem)
+}
+
+note right: Os métodos da máquina são somente um exemplo da representação da comunicação com o exterior.
+
+SCMClient"1" <-down- "1..*" ServicoComunicacaoMaquinas : chama
+Maquina "1" <-down- "1" SCMClient: envia configuração a
+@enduml

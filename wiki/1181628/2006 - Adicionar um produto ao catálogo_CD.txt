@@ -1,0 +1,85 @@
+@startuml
+
+
+title 2006 - Adicionar um produto ao catálogo
+
+class Produto {
++Int codigoFabrico
++String codigoComercial
++String descBreve
++String descCompleta
++ create(codigoFabrico,codigoComercial,descBreve,descCompleta,unidade,categoriaEscolhida)
+}
+
+class Categoria {
++String codigo
++String descricao
+}
+
+class UnidadeMedida {
++String unidade
+}
+
+class Item {
++String idItem
+}
+
+class PersistenceContext {
++ repositories()
+}
+
+class RegistarProdutoController {
++ registarProduto(codigoFabrico,codigoComercial,descBreve,descCompleta,unidade,categoriaEscolhida)
++ getCategoriasProduto()
+}
+
+class RegistarProdutoUI {
++ doShow()
+}
+
+class RepositoryFactory {
++ create()
+}
+
+class CategoriaRepository {
++ create()
++ encontrarTodas()
+}
+
+class ProdutoRepository {
++ create()
++ save()
++ findAll()
+}
+
+class UnidadeMedidaRepository {
++ encontrarTodas()
+}
+
++class CategoriaRepository {
++ encontrarTodas()
+}
+
+class RegistarProdutoController
+class RepositoryFactory
+class ProdutoRepository
+class CategoriaRepository
+class UnidadeMedidaRepository
+class RegistarProdutoUI
+class PersistenceContext
+class Produto
+
+RegistarProdutoController "1" <-up- "1" RegistarProdutoUI: chama
+PersistenceContext "1" <-up- "1" RegistarProdutoController: chama
+RepositoryFactory "1" <-up- "1" PersistenceContext: chama
+ProdutoRepository "1" <-up- "1" RepositoryFactory: cria
+CategoriaRepository "1" <-up- "1" RepositoryFactory: cria
+UnidadeMedidaRepository "1" <-up- "1" RepositoryFactory: cria
+Produto "many" <-up- "1" ProdutoRepository: persiste
+Produto "many" <-up- "1" RegistarProdutoController: cria
+Item "1" <-up- "1" Produto: é
+UnidadeMedida "1" <-up- "1" Item: tem
+Categoria "1" <-up- "1" Item: tem
+
+
+@enduml

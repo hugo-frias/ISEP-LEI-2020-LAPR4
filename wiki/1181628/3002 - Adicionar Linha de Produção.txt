@@ -1,0 +1,13 @@
+@startuml
+
+title 3002 : Adicionar Linha de Produção
+
+RegistarLinhaProducaoUI->RegistarLinhaProducaoController:create
+RegistarLinhaProducaoUI->RegistarLinhaProducaoController:registarLinhaProducao(idLinhaProducao)
+RegistarLinhaProducaoController->PersistenceContext:repositories()
+PersistenceContext->RepositoryFactory:create
+RepositoryFactory->LinhaProducaoRepository:create
+RegistarLinhaProducaoController->LinhaProducao:novaLinhaProducao = create(idLinhaProducao)
+RegistarLinhaProducaoController->LinhaProducaoRepository:save(novaLinhaProducao)
+
+@enduml

@@ -1,0 +1,30 @@
+@startuml
+
+title 1011 - Simulação do funcionamento de uma máquina
+
+class ClienteSMaquina {
++ mensagem_troca
++ mensagem
++ parametros
++ argumentos
++ sockfdG
++ main()
++ read()
++ write()
++ get_line()
++ import_message()
++ client_sender()
++ controller()
+}
+
+class Servidor {
++ isValid()
++ write()
++ read()
+}
+
+note right: Os métodos do Servidor são somente um exemplo da representação.
+
+Servidor "1" <-up- "many" ClienteSMaquina: comunica
+
+@enduml

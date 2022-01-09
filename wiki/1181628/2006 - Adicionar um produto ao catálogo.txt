@@ -1,0 +1,19 @@
+@startuml
+
+title 2006 : Adicionar um produto ao catálogo
+
+RegistarProdutoUI->RegistarProdutoController:create
+RegistarProdutoUI->RegistarProdutoController:getCategoriasProdutos()
+RegistarProdutoController->PersistenceContext:repositories()
+PersistenceContext->RepositoryFactory:create
+RepositoryFactory->CategoriaRepository:create
+RegistarProdutoController->CategoriaRepository:findAll()
+RegistarProdutoController-->RegistarProdutoUI:CategoriasProdutos
+RegistarProdutoUI->RegistarProdutoUI: doShow()
+RegistarProdutoController->UnidadeMedida: unidade = create(unidade,tipoUnidade)
+RegistarProdutoUI->RegistarProdutoController:registarProduto(codigoFabrico,codigoComercial,descBreve,descCompleta,unidade,categoriaEscolhida)
+RegistarProdutoController->Produto:novoProduto = create(codigoFabrico,codigoComercial,descBreve,descCompleta,unidade,categoriaEscolhida)
+RepositoryFactory->ProdutoRepository:create
+RegistarProdutoController->ProdutoRepository:save(novoProduto)
+
+@enduml

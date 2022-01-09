@@ -1,0 +1,93 @@
+@startuml
+title 2007 - Exportação para XML
+
+class ExportarParaXMLUI {
++ doShow()
+}
+
+class ExportarParaXMLController {
++ exportarClasseParaXML()
++ converterXML()
+}
+
+class PersistenceContext {
++ repositories()
+}
+
+class RepositoryFactory {
++ create()
+}
+
+class ProdutoRepository {
++ create()
++ findAll()
+}
+
+class CategoriaRepository {
++ create()
++ findAll()
+}
+
+class LinhaProducaoRepository {
++ create()
++ findAll()
+}
+
+class DepositoRepository {
++ create()
++ findAll()
+}
+
+class MaquinaRepository {
++ create()
++ findAll()
+}
+
+class MateriaPrimaRepository {
++ create()
++ findAll()
+}
+
+class OrdemProducaoRepository {
++ create()
++ findAll()
+}
+
+class EncomendaRepository {
++ create()
++ findAll()
+}
+
+class ListsXML {
++ create()
++ criarInstanciaListXML(dadosEscolhidos)
+}
+
+class JAXBContext {
++ create(ListsXML.class)
++ createMarshaller()
+}
+
+class Marshaller {
++ setProperty(true)
++ marshal(ListsXML lxml, FileOutputStream outputStream)
+}
+
+class FileOutputStream {
++ create(String path)
+}
+
+ExportarParaXMLController "1" <-up- "1" ExportarParaXMLUI:chama
+PersistenceContext "1" <-up- "1" ExportarParaXMLController:chama
+RepositoryFactory "1" <-up- "1" PersistenceContext:chama
+LinhaProducaoRepository "1" <-up- "1" RepositoryFactory: cria
+MaquinaRepository "1" <-up- "1" RepositoryFactory: cria
+ProdutoRepository "1" <-up- "1" RepositoryFactory: cria
+CategoriaRepository "1" <-up- "1" RepositoryFactory: cria
+MateriaPrimaRepository "1" <-up- "1" RepositoryFactory: cria
+DepositoRepository "1" <-up- "1" RepositoryFactory: cria
+ListsXML "1" <-up- "1" ExportarParaXMLController:cria
+FileOutputStream  "1" <-up- "1" ExportarParaXMLController:cria
+JAXBContext  "1" <-up- "1" ExportarParaXMLController:cria
+Marshaller  "1" <-up- "1" JAXBContext:cria
+@enduml

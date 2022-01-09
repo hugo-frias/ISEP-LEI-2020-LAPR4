@@ -1,0 +1,51 @@
+@startuml
+
+title 3002 - Adicionar Linha de Produção
+
+
+class LinhaProducao {
++String idLinhaProducao
+}
+
+class PersistenceContext {
++ repositories()
+}
+
+class RegistarLinhaProducaoController {
++ registarLinhaProducao(idLinhaProducao)
+}
+
+class RepositoryFactory {
++ create()
+}
+
+
+class LinhaProducaoRepository {
++ create()
++ save()
+}
+
+class RegistarLinhaProducaoController
+class RepositoryFactory
+class LinhaProducaoRepository
+class RegistarLinhaProducaoUI
+class PersistenceContext
+class LinhaProducao
+
+RegistarLinhaProducaoController "1" <-up- "1" RegistarLinhaProducaoUI: chama
+PersistenceContext "1" <-up- "1" RegistarLinhaProducaoController: chama
+RepositoryFactory "1" <-up- "1" PersistenceContext: chama
+LinhaProducaoRepository "1" <-up- "1" RepositoryFactory: cria
+LinhaProducao "many" <-up- "1" LinhaProducaoRepository: persiste
+LinhaProducao "many" <-up- "1" RegistarLinhaProducaoController: cria
+Maquina "manu" <-up- "1" LinhaProducao: tem
+
+Maquina : create(codigoInterno,numeroSerie,descricao,dataInstalacao,marca,modelo)
+Maquina : codigoInterno
+Maquina : numeroSerie
+Maquina : descricao
+Maquina : dataInstalacao
+Maquina : marca
+Maquina : modelo
+
+@enduml

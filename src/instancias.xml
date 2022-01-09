@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="ConvertToTXT.xsl"?>
+<Instancias>
+    <Categoria>
+        <codigo>C01</codigo>
+        <descricao>Gerais</descricao>
+    </Categoria>
+    <Categoria>
+        <codigo>C02</codigo>
+        <descricao>Cortiças</descricao>
+    </Categoria>
+    <Categoria>
+        <codigo>C03</codigo>
+        <descricao>Madeiras</descricao>
+    </Categoria>
+    <Categoria>
+        <codigo>C04</codigo>
+        <descricao>Bricolage - pequenos</descricao>
+    </Categoria>
+    <Categoria>
+        <codigo>C05</codigo>
+        <descricao>Decoraçao</descricao>
+    </Categoria>
+    <Categoria>
+        <codigo>C06</codigo>
+        <descricao>Carros</descricao>
+    </Categoria>
+    <Deposito>
+        <codigoDeposito>D001</codigoDeposito>
+        <descricaoDeposito>Deposito de produtos finalizados</descricaoDeposito>
+    </Deposito>
+    <Deposito>
+        <codigoDeposito>D002</codigoDeposito>
+        <descricaoDeposito>Deposito de materias primas</descricaoDeposito>
+    </Deposito>
+    <Deposito>
+        <codigoDeposito>D003</codigoDeposito>
+        <descricaoDeposito>Deposito de produtos semi finalizados</descricaoDeposito>
+    </Deposito>
+    <Encomenda>
+        <idEncomenda>ENC20</idEncomenda>
+        <ordemProducao>
+            <dataPrevistaExecucao>2020-02-22</dataPrevistaExecucao>
+            <datadeEmissao>2020-02-19</datadeEmissao>
+            <execucaoOrdemProducao>
+                <quantidadePretendida>100.0</quantidadePretendida>
+                <quantidadeProduzida>0.0</quantidadeProduzida>
+            </execucaoOrdemProducao>
+            <idOrdemProducao>OP40</idOrdemProducao>
+            <produto>
+                <categoria>
+                    <codigo>C05</codigo>
+                    <descricao>Decoraçao</descricao>
+                </categoria>
+                <codigoComercial>PC01</codigoComercial>
+                <codigoFabrico>PF01</codigoFabrico>
+                <descricaoBreve>Parafusos</descricaoBreve>
+                <descricaoCompleta>Parafusos sextavados feitos de ferro</descricaoCompleta>
+                <unidadeMedidaId>0.0 unidades</unidadeMedidaId>
+            </produto>
+            <unidadeMedida/>
+        </ordemProducao>
+    </Encomenda>
+    <Encomenda>
+        <idEncomenda>ENC21</idEncomenda>
+        <ordemProducao>
+            <dataPrevistaExecucao>2021-02-22</dataPrevistaExecucao>
+            <datadeEmissao>2021-02-19</datadeEmissao>
+            <execucaoOrdemProducao>
+                <quantidadePretendida>50.0</quantidadePretendida>
+                <quantidadeProduzida>0.0</quantidadeProduzida>
+            </execucaoOrdemProducao>
+            <idOrdemProducao>OP41</idOrdemProducao>
+            <produto>
+                <categoria>
+                    <codigo>C06</codigo>
+                    <descricao>Carros</descricao>
+                </categoria>
+                <codigoComercial>PC02</codigoComercial>
+                <codigoFabrico>PF02</codigoFabrico>
+                <descricaoBreve>tela estore</descricaoBreve>
+                <descricaoCompleta>Tela para estore de rolo blackout</descricaoCompleta>
+                <unidadeMedidaId>0.0 metros</unidadeMedidaId>
+            </produto>
+            <unidadeMedida/>
+        </ordemProducao>
+    </Encomenda>
+    <LinhaProdução>
+        <idLinhaProducao>LP001</idLinhaProducao>
+        <listaMaquinas>
+            <codigoInterno>T6</codigoInterno>
+            <descricao>Maquina DEF</descricao>
+            <marca>Cherios</marca>
+            <modelo>golden</modelo>
+            <numSerie>20202345</numSerie>
+            <version>0</version>
+        </listaMaquinas>
+        <listaMaquinas>
+            <codigoInterno>T3</codigoInterno>
+            <descricao>Maquina GHI</descricao>
+            <marca>Woven</marca>
+            <modelo>Woven-1</modelo>
+            <numSerie>20201234</numSerie>
+            <version>0</version>
+        </listaMaquinas>
+        <listaMaquinas>
+            <codigoInterno>M003</codigoInterno>
+            <descricao>Maquina ABC</descricao>
+            <marca>Woven</marca>
+            <modelo>Woven-Meister</modelo>
+            <numSerie>20203456</numSerie>
+            <version>0</version>
+        </listaMaquinas>
+    </LinhaProdução>
+    <LinhaProdução>
+        <idLinhaProducao>LP002</idLinhaProducao>
+    </LinhaProdução>
+    <LinhaProdução>
+        <idLinhaProducao>LP003</idLinhaProducao>
+    </LinhaProdução>
+    <Maquina>
+        <codigoInterno>T3</codigoInterno>
+        <descricao>Maquina GHI</descricao>
+        <marca>Woven</marca>
+        <modelo>Woven-1</modelo>
+        <numSerie>20201234</numSerie>
+        <version>0</version>
+    </Maquina>
+    <Maquina>
+        <codigoInterno>T6</codigoInterno>
+        <descricao>Maquina DEF</descricao>
+        <marca>Cherios</marca>
+        <modelo>golden</modelo>
+        <numSerie>20202345</numSerie>
+        <version>0</version>
+    </Maquina>
+    <Maquina>
+        <codigoInterno>M003</codigoInterno>
+        <descricao>Maquina ABC</descricao>
+        <marca>Woven</marca>
+        <modelo>Woven-Meister</modelo>
+        <numSerie>20203456</numSerie>
+        <version>0</version>
+    </Maquina>
+    <MateriaPrima>
+        <codigoInterno>MP1</codigoInterno>
+        <descricao>Vidros</descricao>
+        <nomeFichaTecnica>fichaTecnicaVidros</nomeFichaTecnica>
+    </MateriaPrima>
+    <MateriaPrima>
+        <codigoInterno>MP2</codigoInterno>
+        <descricao>Madeira</descricao>
+        <nomeFichaTecnica>fichaTecnicaMadeira</nomeFichaTecnica>
+    </MateriaPrima>
+    <MateriaPrima>
+        <codigoInterno>MP3</codigoInterno>
+        <descricao>Asfalto</descricao>
+        <nomeFichaTecnica>fichaTecnicaAsfalto</nomeFichaTecnica>
+    </MateriaPrima>
+    <OrdemProducao>
+        <dataPrevistaExecucao>2020-02-22</dataPrevistaExecucao>
+        <datadeEmissao>2020-02-19</datadeEmissao>
+        <execucaoOrdemProducao>
+            <quantidadePretendida>100.0</quantidadePretendida>
+            <quantidadeProduzida>0.0</quantidadeProduzida>
+        </execucaoOrdemProducao>
+        <idOrdemProducao>OP40</idOrdemProducao>
+        <produto>
+            <categoria>
+                <codigo>C05</codigo>
+                <descricao>Decoraçao</descricao>
+            </categoria>
+            <codigoComercial>PC01</codigoComercial>
+            <codigoFabrico>PF01</codigoFabrico>
+            <descricaoBreve>Parafusos</descricaoBreve>
+            <descricaoCompleta>Parafusos sextavados feitos de ferro</descricaoCompleta>
+            <unidadeMedidaId>0.0 unidades</unidadeMedidaId>
+        </produto>
+        <unidadeMedida/>
+    </OrdemProducao>
+    <OrdemProducao>
+        <dataPrevistaExecucao>2021-02-22</dataPrevistaExecucao>
+        <datadeEmissao>2021-02-19</datadeEmissao>
+        <execucaoOrdemProducao>
+            <quantidadePretendida>50.0</quantidadePretendida>
+            <quantidadeProduzida>0.0</quantidadeProduzida>
+        </execucaoOrdemProducao>
+        <idOrdemProducao>OP41</idOrdemProducao>
+        <produto>
+            <categoria>
+                <codigo>C06</codigo>
+                <descricao>Carros</descricao>
+            </categoria>
+            <codigoComercial>PC02</codigoComercial>
+            <codigoFabrico>PF02</codigoFabrico>
+            <descricaoBreve>tela estore</descricaoBreve>
+            <descricaoCompleta>Tela para estore de rolo blackout</descricaoCompleta>
+            <unidadeMedidaId>0.0 metros</unidadeMedidaId>
+        </produto>
+        <unidadeMedida/>
+    </OrdemProducao>
+    <OrdemProducao>
+        <dataPrevistaExecucao>2022-02-22</dataPrevistaExecucao>
+        <datadeEmissao>2022-02-19</datadeEmissao>
+        <execucaoOrdemProducao>
+            <quantidadePretendida>30.0</quantidadePretendida>
+            <quantidadeProduzida>0.0</quantidadeProduzida>
+        </execucaoOrdemProducao>
+        <idOrdemProducao>OP42</idOrdemProducao>
+        <produto>
+            <categoria>
+                <codigo>C04</codigo>
+                <descricao>Bricolage - pequenos</descricao>
+            </categoria>
+            <codigoComercial>PC03</codigoComercial>
+            <codigoFabrico>PF03</codigoFabrico>
+            <descricaoBreve>Pneu</descricaoBreve>
+            <descricaoCompleta>Pneu grande para veiculos pesados</descricaoCompleta>
+            <unidadeMedidaId>0.0 kgs</unidadeMedidaId>
+        </produto>
+        <unidadeMedida/>
+    </OrdemProducao>
+    <Produto>
+        <categoria>
+            <codigo>C05</codigo>
+            <descricao>Decoraçao</descricao>
+        </categoria>
+        <codigoComercial>PC01</codigoComercial>
+        <codigoFabrico>PF01</codigoFabrico>
+        <descricaoBreve>Parafusos</descricaoBreve>
+        <descricaoCompleta>Parafusos sextavados feitos de ferro</descricaoCompleta>
+        <unidadeMedidaId>0.0 unidades</unidadeMedidaId>
+    </Produto>
+    <Produto>
+        <categoria>
+            <codigo>C06</codigo>
+            <descricao>Carros</descricao>
+        </categoria>
+        <codigoComercial>PC02</codigoComercial>
+        <codigoFabrico>PF02</codigoFabrico>
+        <descricaoBreve>tela estore</descricaoBreve>
+        <descricaoCompleta>Tela para estore de rolo blackout</descricaoCompleta>
+        <unidadeMedidaId>0.0 metros</unidadeMedidaId>
+    </Produto>
+    <Produto>
+        <categoria>
+            <codigo>C04</codigo>
+            <descricao>Bricolage - pequenos</descricao>
+        </categoria>
+        <codigoComercial>PC03</codigoComercial>
+        <codigoFabrico>PF03</codigoFabrico>
+        <descricaoBreve>Pneu</descricaoBreve>
+        <descricaoCompleta>Pneu grande para veiculos pesados</descricaoCompleta>
+        <unidadeMedidaId>0.0 kgs</unidadeMedidaId>
+    </Produto>
+</Instancias>

@@ -1,0 +1,9 @@
+chmod +x shell-all.sh
+chmod +x build-all.sh
+chmod +x rebuild-all.sh
+chmod +x run-bootstrap.sh
+chmod +x run-backoffice.sh
+chmod +x run-scm.sh
+chmod +x run-smm.sh
+chmod +x run-spm.sh
+chmod +x run-simulador.sh

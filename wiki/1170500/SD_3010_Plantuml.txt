@@ -1,0 +1,13 @@
+@startuml
+title 1005 : Inicialização de Categorias de Matérias-Primas
+
+ServicoComunicacaoMaquinas->ServicoComunicacaoMaquinas:envioConfiguracao(args[])
+ServicoComunicacaoMaquinas->SCMClient:start(sslSocket, idMaquina)
+SCMClient->Maquina:enviaPedidoConfiguracao(mensagem)
+Maquina->SCMClient:resposta = responde(mensagem)
+== if (checkResposta(resposta)) ==
+SCMClient->SCMClient:conf = getConfiguracao()
+SCMClient->SCMClient:enviaConfiguracao(conf)
+
+@endtuml
+@enduml

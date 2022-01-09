@@ -1,0 +1,19 @@
+@startuml
+
+title 1011 - Simulação do funcionamento de uma máquina
+
+ClienteSMaquina->Servidor:write(msgHello)
+Servidor->Servidor:read(msgHello)
+Servidor->Servidor:isValid(msgHello.id)
+Servidor->ClienteSMaquina:write(msgAnswer)
+ClienteSMaquina->ClienteSMaquina:read(msgAnswer)
+== if (msgAnswer.code != 151) ==
+ClienteSMaquina->ClienteSMaquina:import_messages(path)
+loop while(msgAnswer.code != 151 || strlen(msg) == 0)
+            ClienteSMaquina->Servidor:write(msg)
+            Servidor->Servidor:read(msg)
+            Servidor->ClienteSMaquina:write(msgAnswer)
+            ClienteSMaquina->ClienteSMaquina:read(msgAnswer)
+end
+
+@endtuml

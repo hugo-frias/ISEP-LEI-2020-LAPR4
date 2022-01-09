@@ -1,0 +1,19 @@
+@startuml
+
+title 2010 - Adicionar uma nova Ordem de Produção
+
+RegistarOrdemProducaoUI->RegistarOrdemProducaoController:create
+RegistarOrdemProducaoUI->RegistarOrdemProducaoController:getProdutos()
+RegistarOrdemProducaoController->PersistenceContext:repositories()
+PersistenceContext->RepositoryFactory:create
+RepositoryFactory->ProdutoRepository:create
+RegistarOrdemProducaoController->ProdutoRepository:findAll()
+RegistarOrdemProducaoController-->RegistarOrdemProducaoUI:todosProdutos
+RegistarOrdemProducaoUI->RegistarOrdemProducaoUI: doShow()
+RegistarOrdemProducaoUI->RegistarOrdemProducaoController:registarOrdemProducao(identificador, quantidadePretendida, aqueleProduto, unidadeMedida, dataPrevistaExecucao)
+RegistarOrdemProducaoController->ExecucaoOrdemProducao:execucaoControlo = create(quantidadeRequisitada)
+RegistarOrdemProducaoController->OrdemProducao:novaOrdemProducao = create(identificador, dataEmissao, dataPrevistaExecucao, aqueleProduto, unidadeMedida, execucaoControlo)
+RepositoryFactory->OrdemProducaoRepository:create
+RegistarOrdemProducaoController->OrdemProducaoRepository:save(novaOrdemProducao)
+
+@enduml

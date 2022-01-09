@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence">
+  <persistence-unit name="eapli.base">
+      <!--
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    -->
+    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+    <class>eapli.base.producao.domain.OrdemProducao</class>
+    <class>eapli.base.producao.domain.Encomenda</class>
+    <class>eapli.base.producao.domain.ExecucaoOrdemProducao</class>
+    <class>eapli.base.producao.domain.TempoExecucao</class>
+    <class>eapli.base.stock.domain.Categoria</class>
+    <class>eapli.base.stock.domain.Produto</class>
+    <class>eapli.base.stock.domain.Deposito</class>
+    <class>eapli.base.stock.domain.FichaProducao</class>
+    <class>eapli.base.producao.domain.Maquina</class>
+    <class>eapli.base.producao.domain.EstadoMaquina</class>
+    <class>eapli.base.producao.domain.LinhaProducao</class>
+    <class>eapli.base.stock.domain.UnidadeMedida</class>
+    <class>eapli.base.stock.domain.Estorno</class>
+    <class>eapli.base.stock.domain.Lote</class>
+    <class>eapli.base.stock.domain.MovimentoStock</class>
+    <class>eapli.base.stock.domain.MateriaPrima</class>
+    <class>eapli.base.comunicacao.domain.Mensagem</class>
+    <class>eapli.base.comunicacao.domain.MensagemConsumo</class>
+    <class>eapli.base.comunicacao.domain.MensagemEntregaProducao</class>
+    <class>eapli.base.comunicacao.domain.MensagemEstorno</class>
+    <class>eapli.base.comunicacao.domain.MensagemFimAtividade</class>
+    <class>eapli.base.comunicacao.domain.MensagemInicioAtividade</class>
+    <class>eapli.base.comunicacao.domain.MensagemParagem</class>
+    <class>eapli.base.comunicacao.domain.MensagemProducao</class>
+    <class>eapli.base.comunicacao.domain.MensagemRetomaAtividade</class>
+    <class>eapli.base.comunicacao.domain.NotificacaoErroProcessamento</class>
+    <class>eapli.framework.infrastructure.authz.domain.model.SystemUser</class>
+    <class>eapli.framework.infrastructure.authz.domain.model.Role</class>
+    <class>eapli.framework.infrastructure.authz.domain.model.RoleSet</class>
+    <class>eapli.framework.infrastructure.authz.domain.model.RoleAssignment</class>
+
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:h2:.\db\base;AUTO_SERVER=true;"/>
+      <!--
+            <property name="javax.persistence.jdbc.url" value="jdbc:h2:..\db\base;MV_STORE=FALSE"/>
+            -->
+      <property name="javax.persistence.jdbc.user" value="sa"/>
+      <property name="javax.persistence.jdbc.password" value="eapli"/>
+      <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
+      <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+      <!-- <property name="eclipselink.logging.level" value="FINE"/> -->
+      <!-- <property name = "hibernate.show_sql" value = "true" /> -->
+      <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+
+    </properties>
+  </persistence-unit>
+</persistence>

@@ -1,0 +1,26 @@
+@startuml
+
+title 1014 - Receção de ficheiros de configuração por parte do Simulador de Máquina
+
+ServicoComunicacaoMaquinas->ServidorSimulador:send(helloRequest)
+ServidorSimulador->ServidorSimulador:read(helloRequest)
+ServidorSimulador->ServidorSimulador:isValid(helloRequest)
+== if (isValid == 151) ==
+ServidorSimulador->ServidorSimulador:msgAnswer.code = 151;
+ServidorSimulador->ServicoComunicacaoMaquinas:write(msgAnswer)
+ServidorSimulador->ServicoComunicacaoMaquinas:fechaConexao()
+== else ==
+ServidorSimulador->ServidorSimulador:msgAnswer.code = 150;
+ServidorSimulador->ServicoComunicacaoMaquinas:write(msgAnswer)
+loop for(;;)
+            ServicoComunicacaoMaquinas->ServidorSimulador:read(mensagem_troca)
+            == if (isValid == 151) ==
+            ServidorSimulador->ServidorSimulador:msgAnswer.code = 151;
+            ServidorSimulador->ServicoComunicacaoMaquinas:write(msgAnswer)
+            ServidorSimulador->ServicoComunicacaoMaquinas:fechaConexao()
+            == else ==
+            ServidorSimulador->ServidorSimulador:adicionarLog(mensagem_troca.mensagem)
+            ServidorSimulador->ServidorSimulador:msgAnswer.code = 150;
+            ServidorSimulador->ServicoComunicacaoMaquinas:write(msgAnswer)
+end
+@enduml

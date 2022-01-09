@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--<?xml-stylesheet type="text/xsl" href="relat2html.xsl"?>-->
+
+<lpr:relatório id="token" xmlns:lpr="http://www.dei.isep.ipp.pt/lprog" xmlns="http://www.dei.isep.ipp.pt/lprog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.dei.isep.ipp.pt/lprog Relatorio.xsd">
+  <lpr:páginaRosto>
+    <lpr:tema>Relatório de LPROG</lpr:tema>
+    <lpr:disciplina id="26326">
+      <lpr:designação>Linguagens e Programação</lpr:designação>
+      <lpr:anoCurricular>2</lpr:anoCurricular>
+      <lpr:sigla>LPROG</lpr:sigla>
+    </lpr:disciplina>
+    <!--1 to 4 repetitions:Tivemos que alterar no XSD para podermos usar 4 autores e não 3-->
+    <lpr:autor>
+      <lpr:nome>Vera Pinto</lpr:nome>
+      <lpr:número>1180730</lpr:número>
+      <lpr:mail>1180730@isep.ipp.pt</lpr:mail>
+    </lpr:autor>
+	<lpr:autor>
+      <lpr:nome>Hugo Frias</lpr:nome>
+      <lpr:número>1170500</lpr:número>
+      <lpr:mail>1170500@isep.ipp.pt</lpr:mail>
+    </lpr:autor>
+	<lpr:autor>
+      <lpr:nome>André Novo</lpr:nome>
+      <lpr:número>1181628</lpr:número>
+      <lpr:mail>1181628@isep.ipp.pt</lpr:mail>
+    </lpr:autor>
+	<lpr:autor>
+      <lpr:nome>Diogo Ribeiro</lpr:nome>
+      <lpr:número>1180782</lpr:número>
+      <lpr:mail>1180782@isep.ipp.pt</lpr:mail>
+    </lpr:autor>
+    <lpr:turma>2DE</lpr:turma>
+    <lpr:professor sigla="PDF" tipoAula="PL">PL</lpr:professor>
+    <lpr:professor sigla="PSM" tipoAula="TP">TP</lpr:professor>
+	<lpr:professor sigla="AMD" tipoAula="T">T</lpr:professor>
+    <lpr:logotipoDEI>https://imgur.com/a/PLGE7dk</lpr:logotipoDEI>
+    <lpr:data>2020-06-13+00:00</lpr:data>
+  </lpr:páginaRosto>
+  <lpr:corpo id="string">
+    <lpr:introdução tituloSecção="SEC001" id="SEC001">
+      <lpr:subsecção id="SUBSEC001">Introdução</lpr:subsecção>
+      <lpr:parágrafo>
+        Este relatório é parte do trabalho desenvolvido no âmbito da disciplina de Linguagens e Programação e é parte da avaliação referente ao 
+			<lpr:itálico>Sprint D</lpr:itálico>.
+			 </lpr:parágrafo>
+			  <lpr:parágrafo>
+		Ao longo do relatório pretendemos mostrar que conseguimos dar resposta total ou parcial a todas as User Stories diretamente relacionadas com a disciplina de LPROG:
+			<lpr:negrito>Sprint C</lpr:negrito>
+			 </lpr:parágrafo>
+			<lpr:listaItems> 
+        <lpr:item label="string"> 2007: Como Gestor de Produção, eu pretendo exportar, para um ficheiro XML, toda a informação subjacente ao chão de fábrica; </lpr:item>
+		<lpr:item label="string"> 1010: Como Gestor de Projeto, eu pretendo que a equipa especifique um documento XSD que possa ser, posteriormente, usado para validar o conteúdo XML gerado pelo sistema;</lpr:item>
+      </lpr:listaItems>	
+		<lpr:parágrafo>	  
+        <lpr:negrito>Sprint D</lpr:negrito>
+		</lpr:parágrafo>
+		<lpr:listaItems>
+			<lpr:item label="string"> 1017: Como Gestor de Projeto, eu pretendo que a equipa elabore um relatório que descreva todas as aplicações de XML, XSD, XSLT e XPATH no sistema;</lpr:item>
+			<lpr:item label="string">2013: Como Gestor de Produção, eu pretendo aplicar uma visualização/transformação a um ficheiro XML anteriormente gerado/exportado;</lpr:item> 
+		 </lpr:listaItems>
+		  <lpr:parágrafo>
+		Este relatório será dividido em três secções: Análise do Problema Proposto, a definição da sintaxe da linguagem definida e as transformações.
+      </lpr:parágrafo>
+    </lpr:introdução>
+    <lpr:outrasSecções>
+      <lpr:análise tituloSecção="SEC002" id="SEC002">
+        
+        <lpr:subsecção id="SUBSEC002">Análise</lpr:subsecção>
+        <lpr:parágrafo>
+          Tendo como base os enunciados dados, começamos a pensar qual seria a melhor forma de dar resposta ao solicitado, que era construir uma app que permitisse gerir um chão de fábrica.
+        </lpr:parágrafo>
+        <lpr:parágrafo>
+		A aplicação deve responder aos principais objetivos do projeto:
+		</lpr:parágrafo>
+		<lpr:listaItems>
+     
+          <lpr:item label="string">Recolher mensagens das diferentes máquinas/equipamentos do chão de fábrica</lpr:item>
+		  <lpr:item label="string">Processamento das mensagens de forma a satisfazer as diversas necessidades, tais como: a gestão de consumos, o controlo de ordens de produção, a gestão to tempo de atividade e paragem de máquinas, o registo de quantidades efetivamente produzidas.</lpr:item>
+		  <lpr:item label="string">Disponibilizar e Integrar informação relevante nos sistemas externos da empresa</lpr:item>
+        </lpr:listaItems>
+		
+		<lpr:parágrafo>
+		De seguida iremos abordar as respostas dadas por nós aos User Stories de LPROG, em primeiro à exportação de um ficheiro XML, em segundo validação do ficheiro XML com um ficheiro XSD criado por nós, e por ultimo, as transformações do ficheiro XML tais como HTLM, XML, JSON e texto simples/corrido.
+		</lpr:parágrafo>
+      </lpr:análise>
+      <lpr:linguagem tituloSecção="SEC003" id="SEC003">
+        <!--You have a CHOICE of the next 5 items at this level-->
+        <lpr:subsecção id="SUBSEC003">Sintaxe da Linguagem Definida</lpr:subsecção>
+        <lpr:parágrafo>
+          A linguagem usada no relatorio e nos diferentes ficheiros das User Stories é o XML. E, de modo a validarmos o documento recorremos a um ou vários XMLSchema (XSL ou XSD).
+        </lpr:parágrafo>
+		<lpr:parágrafo>
+		Em primeiro, geramos um XML através da aplicação criada por nós, este documento contém a informação referente ao chão de fábrica:
+		</lpr:parágrafo>
+		<lpr:figura src="http://www.corp.com/turbine/iovis" descrição="string"/>
+		
+		<lpr:parágrafo>
+		Posteriormente desenvolvemos um XMLSchema que deveria validar o XML criado de forma a comprovar que o XML estava bem criado.
+		</lpr:parágrafo>
+		<lpr:figura src="http://www.corp.com/turbine/iovis" descrição="string"/>
+		
+		<lpr:parágrafo>
+		Como se pode ver no ficheiro XML, a informação encontra-se organizada em blocos, o maior bloco é a root Instancias, dentro desse bloco aparecem os diversos constituintes do chão de fábrica: máquinas, categorias, produtos, linhas de produção,matérias primas,ordens de produção, encomendas.
+		</lpr:parágrafo>
+		<lpr:figura src="http://www.corp.com/turbine/iovis" descrição="string"/>
+		
+		<lpr:parágrafo>
+		Quanto ao XMLSchema criado para validar o documento XML, foram consideradas expressões regulares para validar os diferentes dados, como por exemplo, quanto as datas o formato teria de ser assim:
+		</lpr:parágrafo>
+		<lpr:figura src="http://www.corp.com/turbine/iovis" descrição="string"/>
+		
+      </lpr:linguagem>
+      <lpr:transformações tituloSecção="SEC004" id="SEC004">
+        
+        <lpr:subsecção id="SUBSEC004">Transformações</lpr:subsecção>
+        <lpr:parágrafo>
+		Nesta parte do relatório iremos demonstrar as transformações disponibilizadas, ou seja, transformação de XML para HTML, TXT e para outro XML. A transformação para JSON não foi acabada.
+		</lpr:parágrafo>
+		<lpr:parágrafo>
+		No que diz respeito à transformação de XML para HTML temos um ficheiro XSLT que define as formatações da transformação.
+         </lpr:parágrafo> 
+		  <lpr:figura src="http://www.test.org/caelumque/speluncis" descrição="string"/>
+
+        
+        <lpr:parágrafo>
+		
+No que diz respeito à transformação de XML para TXT temos tambem um ficheiro XSLT que define as formatações da transformação.
+</lpr:parágrafo>         
+		 <lpr:figura src="http://www.test.org/caelumque/speluncis" descrição="string"/>
+
+        
+		<lpr:parágrafo>
+		No que diz respeito à transformação de XML para TXT temos um ficheiro XSLT que define quais nodes a manter ao converter noutro XML.
+          </lpr:parágrafo>
+		  <lpr:figura src="http://www.test.org/caelumque/speluncis" descrição="string"/>
+
+        
+        <lpr:parágrafo>
+		Como referido a transformação de XML em JSON não foi acabada então decidimos não apresentar nada.
+		</lpr:parágrafo>
+      </lpr:transformações>
+    </lpr:outrasSecções>
+    <lpr:conclusão tituloSecção="SEC005" id="SEC005">
+      
+      <lpr:subsecção id="SUBSEC005">Conclusão</lpr:subsecção>
+      <lpr:parágrafo>
+        Esperamos ter conseguido demonstrar de que forma demos resposta as User Stories relacionadas com a disciplina de LPROG. 
+Temos noção que poderiamos ter melhorado e até ter feito a transformação de XML em JSON. 
+Deste modo, esperamos ter aplicado parte dos conhecimentos aprendidos e atender as expectativas. 
+      </lpr:parágrafo>
+    </lpr:conclusão>
+    <lpr:referências tituloSecção="SEC006" id="SEC006">
+      
+		<lpr:refBibliográfica idRef="RefB_1">
+        <lpr:título>Ficha PL4: XML, XML Schema</lpr:título>
+        <lpr:dataPublicação>2019/2020</lpr:dataPublicação>
+        <lpr:autor>LPROG</lpr:autor>
+		</lpr:refBibliográfica>
+		
+		<lpr:refBibliográfica idRef="RefB_2">
+        <lpr:título>Ficha PL5: XPATH, XSLT</lpr:título>
+        <lpr:dataPublicação>2019/2020</lpr:dataPublicação>
+        <lpr:autor>LPROG</lpr:autor>
+		</lpr:refBibliográfica>
+		
+      <lpr:refWeb idRef="RefW_1">
+        <lpr:URL>https://stackoverflow.com/questions/5908668/use-xsl-to-output-plain-text</lpr:URL>
+        <lpr:descrição>Usamos este site para nos ajudar a fazer o XSL da transformação em TXT</lpr:descrição>
+        <lpr:consultadoEm>2012-06-12+00:00</lpr:consultadoEm>
+      </lpr:refWeb>
+	  
+	  <lpr:refWeb idRef="RefW_2">
+        <lpr:URL>https://www.w3schools.com/xml/xsl_intro.asp</lpr:URL>
+        <lpr:descrição>Usamos este site para nos ajudar a fazer os XSLs </lpr:descrição>
+        <lpr:consultadoEm>2012-06-12+00:00</lpr:consultadoEm>
+      </lpr:refWeb>
+	  	  <lpr:refWeb idRef="RefW_3">
+        <lpr:URL>https://www.w3schools.com/xml/schema_facets.asp</lpr:URL>
+        <lpr:descrição>Usamos este site para nos ajudar a fazer as restrições do XSD </lpr:descrição>
+        <lpr:consultadoEm>2012-05-30+00:00</lpr:consultadoEm>
+      </lpr:refWeb>
+	  
+	  <lpr:refWeb idRef="RefW_4">
+        <lpr:URL>https://stackoverflow.com/questions/26959343/convert-java-object-to-xml-string</lpr:URL>
+        <lpr:descrição>Usamos este site para fazer a exportação de Java para XML</lpr:descrição>
+        <lpr:consultadoEm>2012-05-30+00:00</lpr:consultadoEm>
+      </lpr:refWeb>
+	  
+	  <lpr:refWeb idRef="RefW_5">
+        <lpr:URL>https://www.daniweb.com/programming/software-development/threads/174120/xml-to-xml-transformation</lpr:URL>
+        <lpr:descrição>Usamos este site para nos ajudar a fazer o XSL da transformação em XML</lpr:descrição>
+        <lpr:consultadoEm>2012-06-13+00:00</lpr:consultadoEm>
+      </lpr:refWeb>
+	  
+    </lpr:referências>
+  </lpr:corpo>
+</lpr:relatório>
